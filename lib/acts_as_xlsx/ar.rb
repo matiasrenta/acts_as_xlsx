@@ -61,7 +61,7 @@ module Axlsx
         row_style = p.workbook.styles.add_style(row_style) unless row_style.nil?
         header_style = p.workbook.styles.add_style(header_style) unless header_style.nil?
         i18n = self.xlsx_i18n == true ? 'activerecord.attributes' : i18n
-        sheet_name = options.delete(:name) || (i18n ? I18n.t("activerecord.models.#{table_name.underscore}.other") : table_name.humanize) 
+        sheet_name = options.delete(:name) || (i18n ? I18n.t("activerecord.models.#{singular_table_name.underscore}.other") : table_name.humanize) 
         if Rails.version[0] >= '4'
           data = options.delete(:data) || where(options[:where]).order(options[:order]).to_a
         else
