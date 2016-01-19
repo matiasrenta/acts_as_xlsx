@@ -74,7 +74,7 @@ module Axlsx
         p.workbook.add_worksheet(:name=>sheet_name) do |sheet|
           
           col_labels = if i18n
-                         columns.map { |c| I18n.t("#{i18n}.#{self.name.underscore}.#{c}") }                         
+                         columns.map { |c| I18n.t("#{i18n}.#{c}") || I18n.t("#{i18n}.#{self.name.underscore}.#{c}") }                         
                        else
                          columns.map { |c| c.to_s.humanize }
                        end
