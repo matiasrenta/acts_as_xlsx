@@ -74,9 +74,9 @@ module Axlsx
         p.workbook.add_worksheet(:name=>sheet_name) do |sheet|
           
           col_labels = if i18n
-                         columns.map { |c| I18n.t("#{i18n}.#{c}") || I18n.t("#{i18n}.#{self.name.underscore}.#{c}") }                         
+                         columns.map { |c| I18n.t("#{i18n}.#{c.split('.')[0]}") || I18n.t("#{i18n}.#{self.name.underscore}.#{c.split('.')[0]}") }                         
                        else
-                         columns.map { |c| c.to_s.humanize }
+                         columns.map { |c| c.split('.')[0].to_s.humanize }
                        end
           
           sheet.add_row col_labels, :style=>header_style
